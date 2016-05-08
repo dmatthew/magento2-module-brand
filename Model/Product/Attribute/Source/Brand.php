@@ -29,7 +29,7 @@ class Brand extends AbstractSource implements OptionSourceInterface
     /**
      * Construct
      *
-     * @param \Magento\Directory\Model\CountryFactory $countryFactory
+     * @param \Dmatthew\Brand\Model\BrandFactory $brandFactory
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Magento\Framework\App\Cache\Type\Config $configCacheType
      */

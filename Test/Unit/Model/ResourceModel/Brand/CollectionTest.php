@@ -46,15 +46,18 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
         );
 
         $helper = new ObjectManager($this);
-        $this->model = $helper->getObject('Dmatthew\Brand\Model\Product\Attribute\Source\Brand', [
-            'brandCollectionFactory' => $brandCollectionFactory
-        ]);
+        $this->model = $helper->getObject(
+            'Dmatthew\Brand\Model\ResourceModel\Brand\Collection',
+            [
+                'brandCollectionFactory' => $brandCollectionFactory
+            ]
+        );
     }
 
     public function testToOptionArray()
     {
         $expect = [
-            ['label' => '-- Please Select a Brand --', 'value' => ''],
+            ['label' => __('-- Please Select a Brand --'), 'value' => ''],
             ['label' => 'name', 'value' => 3],
         ];
 
