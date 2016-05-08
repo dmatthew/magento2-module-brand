@@ -21,6 +21,7 @@ class BrandSetupTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             [
                 'name',
+                'description',
             ],
             array_keys($defaultEntities['dmatthew_brand']['attributes'])
         );

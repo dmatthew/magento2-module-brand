@@ -74,6 +74,16 @@ class BrandSetup extends EavSetup
                         'sort_order' => 1,
                         'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
                     ],
+                    'description' => [
+                        'type' => 'text',
+                        'label' => 'Description',
+                        'input' => 'textarea',
+                        'required' => false,
+                        'sort_order' => 2,
+                        'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+                        'wysiwyg_enabled' => true,
+                        'is_html_allowed_on_front' => true,
+                    ],
                 ],
             ]
         ];
