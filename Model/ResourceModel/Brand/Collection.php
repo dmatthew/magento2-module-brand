@@ -2,11 +2,9 @@
 
 namespace Dmatthew\Brand\Model\ResourceModel\Brand;
 
-
 /**
- * Category resource collection
+ * Brand resource collection
  *
- * @author      Magento Core Team <core@magentocommerce.com>
  */
 class Collection extends \Magento\Catalog\Model\ResourceModel\Collection\AbstractCollection
 {
@@ -18,18 +16,53 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Collection\Abstrac
     protected $_brandCollectionFactory;
 
     /**
-     * Construct
-     *
+     * @param \Magento\Framework\Data\Collection\EntityFactory $entityFactory
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
+     * @param \Magento\Framework\Event\ManagerInterface $eventManager
+     * @param \Magento\Eav\Model\Config $eavConfig
+     * @param \Magento\Framework\App\ResourceConnection $resource
+     * @param \Magento\Eav\Model\EntityFactory $eavEntityFactory
+     * @param \Magento\Catalog\Model\ResourceModel\Helper $resourceHelper
+     * @param \Magento\Framework\Validator\UniversalFactory $universalFactory
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Dmatthew\Brand\Model\ResourceModel\Brand\CollectionFactory $brandCollectionFactory
+     * @param \Magento\Framework\DB\Adapter\AdapterInterface $connection
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
-        \Dmatthew\Brand\Model\ResourceModel\Brand\CollectionFactory $brandCollectionFactory
+        \Magento\Framework\Data\Collection\EntityFactory $entityFactory,
+        \Psr\Log\LoggerInterface $logger,
+        \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
+        \Magento\Framework\Event\ManagerInterface $eventManager,
+        \Magento\Eav\Model\Config $eavConfig,
+        \Magento\Framework\App\ResourceConnection $resource,
+        \Magento\Eav\Model\EntityFactory $eavEntityFactory,
+        \Magento\Catalog\Model\ResourceModel\Helper $resourceHelper,
+        \Magento\Framework\Validator\UniversalFactory $universalFactory,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Dmatthew\Brand\Model\ResourceModel\Brand\CollectionFactory $brandCollectionFactory,
+        \Magento\Framework\DB\Adapter\AdapterInterface $connection = null
     ) {
         $this->_brandCollectionFactory = $brandCollectionFactory;
+        parent::__construct(
+            $entityFactory,
+            $logger,
+            $fetchStrategy,
+            $eventManager,
+            $eavConfig,
+            $resource,
+            $eavEntityFactory,
+            $resourceHelper,
+            $universalFactory,
+            $storeManager,
+            $connection
+        );
     }
 
     /**
-     * Init collection and determine table names
+     * Init collection and determine table names.
      *
      * @return void
      */
@@ -39,8 +72,9 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Collection\Abstrac
     }
 
     /**
-     * Convert items array to array for select options
+     * Convert items array to array for select options.
      *
+     * @param $addEmpty bool
      * @return array
      */
     public function toOptionArray($addEmpty = true)
