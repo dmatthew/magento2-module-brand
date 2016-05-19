@@ -1,1 +1,7 @@
-<h1>SUCCESS!!</h1>
+<?php
+/**
+ * @var $block \Dmatthew\Brand\Block\Brand\View
+ */
+?>
+<h1><?php echo $block->getBrand()->getName() ?></h1>
+<p><?php echo $block->getBrand()->getDescription() ?></p>
