@@ -127,6 +127,27 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
     }
 
     /**
+     * Get brand description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->_getData(self::DESCRIPTION);
+    }
+
+    /**
+     * Set brand description
+     *
+     * @param string $description
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        return $this->setData(self::DESCRIPTION, $description);
+    }
+
+    /**
      * @return string|null
      */
     public function getCreatedAt()

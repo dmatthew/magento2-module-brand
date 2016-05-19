@@ -11,6 +11,7 @@ interface BrandInterface extends \Magento\Framework\Api\CustomAttributesDataInte
      * Constants defined for keys of  data array
      */
     const NAME = 'name';
+    const DESCRIPTION = 'description';
 
     const CREATED_AT = 'created_at';
 
@@ -43,6 +44,21 @@ interface BrandInterface extends \Magento\Framework\Api\CustomAttributesDataInte
      * @return $this
      */
     public function setName($name);
+
+    /**
+     * Get category description
+     *
+     * @return string
+     */
+    public function getDescription();
+
+    /**
+     * Set category description
+     *
+     * @param string $name
+     * @return $this
+     */
+    public function setDescription($description);
 
     /**
      * @return string|null
