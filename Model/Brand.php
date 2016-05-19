@@ -26,7 +26,7 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
     const CACHE_TAG = 'dmatthew_brand';
 
     /**
-     * Product Store Id
+     * Brand Store Id
      */
     const STORE_ID = 'store_id';
 
@@ -174,7 +174,7 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
     }
 
     /**
-     * Set product store id
+     * Set brand store id
      *
      * @param int $storeId
      * @return $this
