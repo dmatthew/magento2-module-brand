@@ -26,7 +26,7 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
     const CACHE_TAG = 'dmatthew_brand';
 
     /**
-     * Product Store Id
+     * Brand Store Id
      */
     const STORE_ID = 'store_id';
 
@@ -127,6 +127,27 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
     }
 
     /**
+     * Get brand description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->_getData(self::DESCRIPTION);
+    }
+
+    /**
+     * Set brand description
+     *
+     * @param string $description
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        return $this->setData(self::DESCRIPTION, $description);
+    }
+
+    /**
      * @return string|null
      */
     public function getCreatedAt()
@@ -174,7 +195,7 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
     }
 
     /**
-     * Set product store id
+     * Set brand store id
      *
      * @param int $storeId
      * @return $this
