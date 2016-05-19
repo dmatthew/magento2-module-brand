@@ -29,7 +29,13 @@ class View extends \Magento\Framework\View\Element\Template
     {
         parent::_prepareLayout();
 
-        $this->pageConfig->getTitle()->set('Brands!!!');
+        $brand = $this->getBrand();
+        if ($brand) {
+            $title = $brand->getName();
+            if ($title) {
+                $this->pageConfig->getTitle()->set($title);
+            }
+        }
         
         return $this;
     }
