@@ -294,11 +294,7 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
      */
     public function getBrandIdUrl()
     {
-        $urlKey = $this->getUrlKey()
-            ? $this->getUrlKey()
-            : $this->formatUrlKey($this->getName());
-
-        $url = $this->getUrlInstance()->getUrl('catalog/category/view', ['s' => $urlKey, 'id' => $this->getId()]);
+        $url = $this->getUrlInstance()->getUrl('brand/brand/view', ['id' => $this->getId()]);
         return $url;
     }
 }
