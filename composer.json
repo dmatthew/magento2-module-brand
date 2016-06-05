@@ -6,7 +6,7 @@
         "magento/module-catalog": "100.0.*"
     },
     "suggest": {
-        "dmatthew/module-brand-sample-data": "Sample Data version:100.0.*"
+        "dmatthew/module-brand-sample-data": "Sample Data version:0.0.1"
     },
     "type": "magento2-module",
     "version": "0.0.1",

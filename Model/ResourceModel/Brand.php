@@ -5,7 +5,7 @@ namespace Dmatthew\Brand\Model\ResourceModel;
 use Magento\Catalog\Model\ResourceModel\AbstractResource;
 
 /**
- * Product entity resource model
+ * Brand entity resource model
  *
  * @SuppressWarnings(PHPMD.LongVariable)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

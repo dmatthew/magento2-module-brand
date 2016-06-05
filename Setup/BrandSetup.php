@@ -85,6 +85,15 @@ class BrandSetup extends EavSetup
                         'wysiwyg_enabled' => true,
                         'is_html_allowed_on_front' => true,
                     ],
+                    'url_key' => [
+                        'type' => 'varchar',
+                        'label' => 'URL Key',
+                        'input' => 'text',
+                        'required' => false,
+                        'sort_order' => 3,
+                        'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+                        'group' => 'General Information',
+                    ]
                 ],
             ]
         ];
