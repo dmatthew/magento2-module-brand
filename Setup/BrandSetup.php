@@ -69,7 +69,6 @@ class BrandSetup extends EavSetup
                         'type' => 'varchar',
                         'label' => 'Name',
                         'input' => 'text',
-                        'source' => 'Dmatthew\Brand\Model\Product\Attribute\Source\Brand',
                         'frontend_class' => 'validate-length maximum-length-255',
                         'sort_order' => 1,
                         'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,

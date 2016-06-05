@@ -2,6 +2,7 @@
 
 namespace Dmatthew\Brand\Setup;
 
+use Dmatthew\Brand\Setup\BrandSetup;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
@@ -36,9 +37,16 @@ class InstallData implements InstallDataInterface
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        /** @var \Magento\Catalog\Setup\BrandSetup $brandSetup */
+        /** @var BrandSetup $brandSetup */
         $brandSetup = $this->brandSetupFactory->create(['setup' => $setup]);
 
         $brandSetup->installEntities();
+
+        $brandSetup->updateAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'manufacturer',
+            'source_model',
+            'Dmatthew\Brand\Model\Product\Attribute\Source\Brand'
+        );
     }
 }
