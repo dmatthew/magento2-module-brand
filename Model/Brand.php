@@ -5,9 +5,14 @@ namespace Dmatthew\Brand\Model;
 use Dmatthew\Brand\Api\Data\BrandInterface;
 use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\DataObject\IdentityInterface;
+use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
+use Magento\UrlRewrite\Model\UrlFinderInterface;
 
 /**
  * Dmatthew brand
+ *
+ * @method string getUrlKey()
+ * @method Brand setUrlKey(string $urlKey)
  *
  * @SuppressWarnings(PHPMD.LongVariable)
  * @SuppressWarnings(PHPMD.ExcessivePublicCount)
@@ -52,11 +57,31 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
     protected $_cacheTag = self::CACHE_TAG;
 
     /**
+     * URL Model instance
+     *
+     * @var \Magento\Framework\UrlInterface
+     */
+    protected $_url;
+
+    /**
+     * Core data
+     *
+     * @var \Magento\Framework\Filter\FilterManager
+     */
+    protected $filter;
+
+    /** @var UrlFinderInterface */
+    protected $urlFinder;
+
+    /**
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory
      * @param AttributeValueFactory $customAttributeFactory
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Framework\UrlInterface $url
+     * @param \Magento\Framework\Filter\FilterManager $filter,
+     * @param UrlFinderInterface $urlFinder,
      * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
      * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
      * @param array $data
@@ -68,10 +93,16 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
         \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory,
         AttributeValueFactory $customAttributeFactory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Magento\Framework\UrlInterface $url,
+        \Magento\Framework\Filter\FilterManager $filter,
+        UrlFinderInterface $urlFinder,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = []
     ) {
+        $this->_url = $url;
+        $this->filter = $filter;
+        $this->urlFinder = $urlFinder;
         parent::__construct(
             $context,
             $registry,
@@ -203,5 +234,84 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
     public function setStoreId($storeId)
     {
         return $this->setData(self::STORE_ID, $storeId);
+    }
+
+    /**
+     * Retrieve array of store ids for this brand.
+     *
+     * @return array
+     */
+    public function getStoreIds()
+    {
+        if (!$this->hasStoreIds()) {
+            $storeIds = [];
+            if ($stores = $this->_storeManager->getStores()) {
+                $storeIds = array_keys($stores);
+            }
+            $this->setStoreIds($storeIds);
+        }
+        return $this->getData('store_ids');
+    }
+
+    /**
+     * Format URL key from name or defined key
+     *
+     * @param string $str
+     * @return string
+     */
+    public function formatUrlKey($str)
+    {
+        return $this->filter->translitUrl($str);
+    }
+
+    /**
+     * Retrieve URL instance
+     *
+     * @return \Magento\Framework\UrlInterface
+     */
+    public function getUrlInstance()
+    {
+        return $this->_url;
+    }
+
+    /**
+     * Get brand url.
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        $url = $this->_getData('url');
+        if ($url === null) {
+            if ($this->hasData('request_path') && $this->getRequestPath() != '') {
+                $this->setData('url', $this->getUrlInstance()->getDirectUrl($this->getRequestPath()));
+                return $this->getData('url');
+            }
+
+            $rewrite = $this->urlFinder->findOneByData([
+                UrlRewrite::ENTITY_ID => $this->getId(),
+                UrlRewrite::ENTITY_TYPE => BrandUrlRewriteGenerator::ENTITY_TYPE,
+                UrlRewrite::STORE_ID => $this->getStoreId(),
+            ]);
+            if ($rewrite) {
+                $this->setData('url', $this->getUrlInstance()->getDirectUrl($rewrite->getRequestPath()));
+                return $this->getData('url');
+            }
+
+            $this->setData('url', $this->getBrandIdUrl());
+            return $this->getData('url');
+        }
+        return $url;
+    }
+
+    /**
+     * Retrieve brand id URL
+     *
+     * @return string
+     */
+    public function getBrandIdUrl()
+    {
+        $url = $this->getUrlInstance()->getUrl('brand/brand/view', ['id' => $this->getId()]);
+        return $url;
     }
 }

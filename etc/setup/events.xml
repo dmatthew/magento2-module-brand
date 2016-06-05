@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="dmatthew_brand_save_after">
+        <observer name="process_url_rewrite_saving" instance="Dmatthew\Brand\Observer\ProcessUrlRewriteSavingObserver" />
+    </event>
+</config>
