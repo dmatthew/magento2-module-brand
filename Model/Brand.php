@@ -237,6 +237,23 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
     }
 
     /**
+     * Retrieve array of store ids for this brand.
+     *
+     * @return array
+     */
+    public function getStoreIds()
+    {
+        if (!$this->hasStoreIds()) {
+            $storeIds = [];
+            if ($stores = $this->_storeManager->getStores()) {
+                $storeIds = array_keys($stores);
+            }
+            $this->setStoreIds($storeIds);
+        }
+        return $this->getData('store_ids');
+    }
+
+    /**
      * Format URL key from name or defined key
      *
      * @param string $str

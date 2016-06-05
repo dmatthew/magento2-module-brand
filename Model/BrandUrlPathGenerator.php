@@ -6,7 +6,7 @@ use Magento\Store\Model\Store;
 
 class BrandUrlPathGenerator
 {
-    const XML_PATH_BRAND_URL_SUFFIX = 'catalog/seo/brand_url_suffix';
+    const XML_PATH_BRAND_URL_SUFFIX = 'brand/seo/brand_url_suffix';
 
     /**
      * Cache for brand rewrite suffix

@@ -6,6 +6,7 @@ use Dmatthew\Brand\Model\Brand;
 use Dmatthew\Brand\Model\Brand\CanonicalUrlRewriteGenerator;
 use Dmatthew\Brand\Model\Brand\CurrentUrlRewritesRegenerator;
 use Magento\CatalogUrlRewrite\Service\V1\StoreViewService;
+use Magento\CatalogUrlRewrite\Model\ObjectRegistryFactory;
 use Magento\Store\Model\Store;
 
 class BrandUrlRewriteGenerator
@@ -93,11 +94,11 @@ class BrandUrlRewriteGenerator
     {
         $urls = [];
         $brandId = $this->brand->getId();
-        foreach ($this->brand->getStoreIds() as $id) {
-            if (!$this->isGlobalScope($id)
-                && !$this->storeViewService->doesEntityHaveOverriddenUrlKeyForStore($id, $brandId, Brand::ENTITY)
+        foreach ($this->brand->getStoreIds() as $storeId) {
+            if (!$this->isGlobalScope($storeId)
+                && !$this->storeViewService->doesEntityHaveOverriddenUrlKeyForStore($storeId, $brandId, Brand::ENTITY)
             ) {
-                $urls = array_merge($urls, $this->generateForSpecificStoreView($id));
+                $urls = array_merge($urls, $this->generateForSpecificStoreView($storeId));
             }
         }
         return $urls;
