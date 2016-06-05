@@ -5,6 +5,13 @@ namespace Dmatthew\Brand\Block\Brand;
 class View extends \Magento\Framework\View\Element\Template
 {
     /**
+     * Magento string lib
+     *
+     * @var \Magento\Framework\Stdlib\StringUtils
+     */
+    protected $string;
+
+    /**
      * Core registry
      *
      * @var \Magento\Framework\Registry
@@ -14,14 +21,17 @@ class View extends \Magento\Framework\View\Element\Template
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Framework\Registry $registry
+     * @param \Magento\Framework\Stdlib\StringUtils $string
      * @param array $data
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Registry $registry,
+        \Magento\Framework\Stdlib\StringUtils $string,
         array $data = []
     ) {
         $this->_coreRegistry = $registry;
+        $this->string = $string;
         parent::__construct($context, $data);
     }
 
@@ -31,9 +41,17 @@ class View extends \Magento\Framework\View\Element\Template
 
         $brand = $this->getBrand();
         if ($brand) {
-            $title = $brand->getName();
-            if ($title) {
-                $this->pageConfig->getTitle()->set($title);
+
+            $metaTitle = $brand->getMetaTitle();
+            if ($metaTitle) {
+                $this->pageConfig->getTitle()->set($metaTitle);
+            }
+
+            $metaDescription = $brand->getMetaDescription();
+            if ($metaDescription) {
+                $this->pageConfig->setDescription($metaDescription);
+            } else {
+                $this->pageConfig->setDescription($this->string->substr($brand->getDescription(), 0, 255));
             }
         }
         
