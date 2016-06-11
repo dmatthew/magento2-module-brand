@@ -4,4 +4,5 @@
     <preference for="Dmatthew\Brand\Api\Data\BrandAttributeInterface" type="Magento\Catalog\Model\ResourceModel\Eav\Attribute" />
     <preference for="Dmatthew\Brand\Api\BrandAttributeRepositoryInterface" type="Dmatthew\Brand\Model\Brand\Attribute\Repository" />
     <preference for="Dmatthew\Brand\Api\Data\BrandAttributeSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Dmatthew\Brand\Api\BrandRepositoryInterface" type="Dmatthew\Brand\Model\BrandRepository" />
 </config>
