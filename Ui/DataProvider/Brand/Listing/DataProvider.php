@@ -1,13 +1,13 @@
 <?php
 
-namespace Dmatthew\Brand\Ui\DataProvider\Brand;
+namespace Dmatthew\Brand\Ui\DataProvider\Brand\Listing;
 
 use Dmatthew\Brand\Model\ResourceModel\Brand\CollectionFactory;
 
 /**
- * Class BrandDataProvider
+ * Class DataProvider
  */
-class BrandDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
     /**
      * Brand collection

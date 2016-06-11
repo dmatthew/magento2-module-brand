@@ -51,7 +51,6 @@ class Edit extends \Dmatthew\Brand\Controller\Adminhtml\Brand
 
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->addHandle('dmatthew_brand_' . $brand->getTypeId());
         $resultPage->setActiveMenu('Dmatthew_Brand::brands');
         $resultPage->getConfig()->getTitle()->prepend(__('Brands'));
         $resultPage->getConfig()->getTitle()->prepend($brand->getName());
@@ -67,11 +66,6 @@ class Edit extends \Dmatthew\Brand\Controller\Adminhtml\Brand
                         ['_current' => true, 'active_tab' => null, 'tab' => null, 'store' => null]
                     )
                 );
-        }
-
-        $block = $resultPage->getLayout()->getBlock('catalog.wysiwyg.js');
-        if ($block) {
-            $block->setStoreId($brand->getStoreId());
         }
 
         return $resultPage;
