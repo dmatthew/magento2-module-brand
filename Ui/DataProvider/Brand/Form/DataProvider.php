@@ -44,7 +44,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         'visible' => 'is_visible',
         'required' => 'is_required',
         'label' => 'frontend_label',
-        'sortOrder' => 'sort_order',
         'notice' => 'note',
         'default' => 'default_value',
         'size' => 'multiline_count',

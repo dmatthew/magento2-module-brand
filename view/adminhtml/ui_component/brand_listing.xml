@@ -17,7 +17,7 @@
     </argument>
     <dataSource name="brand_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Dmatthew\Brand\Ui\DataProvider\Brand\Listing\DataProvider</argument>
+            <argument name="class" xsi:type="string">Dmatthew\Brand\Ui\DataProvider\Brand\Grid\DataProvider</argument>
             <argument name="name" xsi:type="string">brand_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>

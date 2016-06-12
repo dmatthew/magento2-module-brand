@@ -1,6 +1,6 @@
 <?php
 
-namespace Dmatthew\Brand\Ui\DataProvider\Brand\Listing;
+namespace Dmatthew\Brand\Ui\DataProvider\Brand\Grid;
 
 use Dmatthew\Brand\Model\ResourceModel\Brand\CollectionFactory;
 
