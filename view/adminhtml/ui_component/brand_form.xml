@@ -14,8 +14,8 @@
             <item name="back" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\BackButton</item>
             <item name="delete" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\DeleteButton</item>
             <item name="reset" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\ResetButton</item>
-            <item name="save" xsi:type="string">Magento\Customer\Block\Adminhtml\Edit\SaveButton</item>
-            <item name="save_and_continue" xsi:type="string">Magento\Customer\Block\Adminhtml\Edit\SaveAndContinueButton</item>
+            <item name="save" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\SaveButton</item>
+            <item name="save_and_continue" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\SaveAndContinueButton</item>
         </item>
     </argument>
     <dataSource name="brand_form_data_source">
