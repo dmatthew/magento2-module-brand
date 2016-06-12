@@ -38,7 +38,7 @@ class SaveAndContinueButton extends GenericButton implements ButtonProviderInter
                         'button' => ['event' => 'saveAndContinueEdit'],
                     ],
                 ],
-                'sort_order' => 80,
+                'sort_order' => 40,
             ];
         }
         return $data;
