@@ -11,8 +11,8 @@
             <item name="navContainerName" xsi:type="string">left</item>
         </item>
         <item name="buttons" xsi:type="array">
-            <item name="back" xsi:type="string">Magento\Customer\Block\Adminhtml\Edit\BackButton</item>
-            <item name="delete" xsi:type="string">Magento\Customer\Block\Adminhtml\Edit\DeleteButton</item>
+            <item name="back" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\DeleteButton</item>
             <item name="reset" xsi:type="string">Magento\Customer\Block\Adminhtml\Edit\ResetButton</item>
             <item name="save" xsi:type="string">Magento\Customer\Block\Adminhtml\Edit\SaveButton</item>
             <item name="save_and_continue" xsi:type="string">Magento\Customer\Block\Adminhtml\Edit\SaveAndContinueButton</item>
