@@ -26,8 +26,8 @@
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="brand/index/save"/>
-                    <item name="validate_url" xsi:type="url" path="brand/index/validate"/>
+                    <item name="submit_url" xsi:type="url" path="brand/brand/save"/>
+                    <item name="validate_url" xsi:type="url" path="brand/brand/validate"/>
                 </item>
             </argument>
         </argument>

@@ -2,8 +2,6 @@
 
 namespace Dmatthew\Brand\Controller\Adminhtml\Brand;
 
-use Dmatthew\Brand\Api\BrandRepositoryInterface;
-
 class Edit extends \Dmatthew\Brand\Controller\Adminhtml\Brand
 {
     /**
@@ -12,27 +10,6 @@ class Edit extends \Dmatthew\Brand\Controller\Adminhtml\Brand
      * @var array
      */
     protected $_publicActions = ['edit'];
-
-    /**
-     * @var \Magento\Framework\View\Result\PageFactory
-     */
-    protected $resultPageFactory;
-
-    /**
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Dmatthew\Brand\Controller\Adminhtml\Brand\Builder $brandBuilder
-     * @param BrandRepositoryInterface $brandRepository
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
-     */
-    public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Dmatthew\Brand\Controller\Adminhtml\Brand\Builder $brandBuilder,
-        BrandRepositoryInterface $brandRepository,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
-    ) {
-        parent::__construct($context, $brandBuilder, $brandRepository);
-        $this->resultPageFactory = $resultPageFactory;
-    }
 
     /**
      * Brand edit form
