@@ -22,6 +22,9 @@ class BrandSetupTest extends \PHPUnit_Framework_TestCase
             [
                 'name',
                 'description',
+                 'url_key',
+                'meta_title',
+                'meta_description'
             ],
             array_keys($defaultEntities['dmatthew_brand']['attributes'])
         );
