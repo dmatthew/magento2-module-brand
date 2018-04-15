@@ -93,7 +93,25 @@ class BrandSetup extends EavSetup
                         'sort_order' => 3,
                         'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
                         'group' => 'General Information',
-                    ]
+                    ],
+                    'meta_title' => [
+                        'type' => 'varchar',
+                        'label' => 'Meta Title',
+                        'input' => 'text',
+                        'required' => false,
+                        'sort_order' => 10,
+                        'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+                    ],
+                    'meta_description' => [
+                        'type' => 'varchar',
+                        'label' => 'Meta Description',
+                        'input' => 'textarea',
+                        'required' => false,
+                        'note' => 'Maximum 255 chars',
+                        'class' => 'validate-length maximum-length-255',
+                        'sort_order' => 20,
+                        'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
+                    ],
                 ],
             ]
         ];
