@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Dmatthew_Brand::brands" title="Brands" module="Dmatthew_Brand" sortOrder="30" parent="Magento_Catalog::inventory" action="brand/brand/" resource="Dmatthew_Brand::brands"/>
+    </menu>
+</config>

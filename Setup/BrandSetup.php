@@ -63,6 +63,7 @@ class BrandSetup extends EavSetup
                 'entity_model' => 'Dmatthew\Brand\Model\ResourceModel\Brand',
                 'attribute_model' => 'Magento\Catalog\Model\ResourceModel\Eav\Attribute',
                 'table' => 'brand_entity',
+                'additional_attribute_table' => 'catalog_eav_attribute',
                 'entity_attribute_collection' => 'Magento\Eav\Model\ResourceModel\Entity\Attribute\Collection',
                 'attributes' => [
                     'name' => [
