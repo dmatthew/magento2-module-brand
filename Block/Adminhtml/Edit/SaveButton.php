@@ -4,10 +4,6 @@ namespace Dmatthew\Brand\Block\Adminhtml\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
-/**
- * Class SaveButton
- * @package Magento\Customer\Block\Adminhtml\Edit
- */
 class SaveButton extends GenericButton implements ButtonProviderInterface
 {
     /**
@@ -32,7 +28,7 @@ class SaveButton extends GenericButton implements ButtonProviderInterface
         $data = [];
         if ($brandId) {
             $data = [
-                'label' => __('Save Customer'),
+                'label' => __('Save Brand'),
                 'class' => 'save primary',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save']],

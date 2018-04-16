@@ -4,10 +4,6 @@ namespace Dmatthew\Brand\Block\Adminhtml\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
-/**
- * Class DeleteButton
- * @package Magento\Customer\Block\Adminhtml\Edit
- */
 class DeleteButton extends GenericButton implements ButtonProviderInterface
 {
     /**

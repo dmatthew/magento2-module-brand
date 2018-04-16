@@ -3,67 +3,70 @@
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">brand_form.brand_form_data_source</item>
-            <item name="deps" xsi:type="string">brand_form.brand_form_data_source</item>
         </item>
         <item name="label" xsi:type="string" translate="true">Brand Information</item>
-        <item name="layout" xsi:type="array">
-            <item name="type" xsi:type="string">tabs</item>
-            <item name="navContainerName" xsi:type="string">left</item>
-        </item>
-        <item name="buttons" xsi:type="array">
-            <item name="back" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\BackButton</item>
-            <item name="delete" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\DeleteButton</item>
-            <item name="reset" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\ResetButton</item>
-            <item name="save" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\SaveButton</item>
-            <item name="save_and_continue" xsi:type="string">Dmatthew\Brand\Block\Adminhtml\Edit\SaveAndContinueButton</item>
-        </item>
+        <item name="reverseMetadataMerge" xsi:type="boolean">true</item>
     </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Dmatthew\Brand\Block\Adminhtml\Edit\BackButton"/>
+            <button name="delete" class="Dmatthew\Brand\Block\Adminhtml\Edit\DeleteButton"/>
+            <button name="reset" class="Dmatthew\Brand\Block\Adminhtml\Edit\ResetButton"/>
+            <button name="save" class="Dmatthew\Brand\Block\Adminhtml\Edit\SaveButton"/>
+            <button name="save_and_continue" class="Dmatthew\Brand\Block\Adminhtml\Edit\SaveAndContinueButton"/>
+        </buttons>
+        <layout>
+            <navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>brand_form.brand_form_data_source</dep>
+        </deps>
+    </settings>
     <dataSource name="brand_form_data_source">
-        <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Dmatthew\Brand\Ui\DataProvider\Brand\Form\DataProvider</argument>
-            <argument name="name" xsi:type="string">brand_form_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
-            <argument name="requestFieldName" xsi:type="string">id</argument>
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="brand/brand/save"/>
-                    <item name="validate_url" xsi:type="url" path="brand/brand/validate"/>
-                </item>
-            </argument>
-        </argument>
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
+        <settings>
+            <validateUrl path="brand/brand/validate"/>
+            <submitUrl path="brand/brand/save"/>
+        </settings>
+        <dataProvider class="Dmatthew\Brand\Ui\DataProvider\Brand\Form\DataProvider" name="brand_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
     </dataSource>
     <fieldset name="brand">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">Brand Details</item>
-            </item>
-        </argument>
-        <field name="entity_id">
+        <settings>
+            <label translate="true">Brand Details</label>
+        </settings>
+        <field name="entity_id" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="visible" xsi:type="boolean">false</item>
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">brand</item>
                 </item>
             </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+            </settings>
         </field>
-        <field name="name">
+        <field name="name" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">brand</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
                 </item>
             </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+            </settings>
         </field>
     </fieldset>
 </form>

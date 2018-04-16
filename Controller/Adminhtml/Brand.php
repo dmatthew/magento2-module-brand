@@ -4,6 +4,7 @@ namespace Dmatthew\Brand\Controller\Adminhtml;
 
 use Magento\Backend\App\Action;
 use Dmatthew\Brand\Api\BrandRepositoryInterface;
+use Magento\Framework\Message\Error;
 
 /**
  * Brand controller
@@ -64,5 +65,27 @@ abstract class Brand extends \Magento\Backend\App\Action
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Dmatthew_Brand::brands');
+    }
+
+    /**
+     * Add errors messages to session.
+     *
+     * @param array|string $messages
+     * @return void
+     *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+     */
+    protected function _addSessionErrorMessages($messages)
+    {
+        $messages = (array)$messages;
+        $session = $this->_getSession();
+
+        $callback = function ($error) use ($session) {
+            if (!$error instanceof Error) {
+                $error = new Error($error);
+            }
+            $this->messageManager->addMessage($error);
+        };
+        array_walk_recursive($messages, $callback);
     }
 }

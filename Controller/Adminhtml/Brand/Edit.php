@@ -22,7 +22,7 @@ class Edit extends \Dmatthew\Brand\Controller\Adminhtml\Brand
         $brand = $this->brandBuilder->build($this->getRequest());
 
         if ($brandId && !$brand->getId()) {
-            $this->messageManager->addError(__('This brand no longer exists.'));
+            $this->messageManager->addErrorMessage(__('This brand no longer exists.'));
             /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
             $resultRedirect = $this->resultRedirectFactory->create();
             return $resultRedirect->setPath('brand/*/');

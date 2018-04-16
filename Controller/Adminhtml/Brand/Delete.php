@@ -17,7 +17,7 @@ class Delete extends \Dmatthew\Brand\Controller\Adminhtml\Brand
         $formKeyIsValid = $this->_formKeyValidator->validate($this->getRequest());
         $isPost = $this->getRequest()->isPost();
         if (!$formKeyIsValid || !$isPost) {
-            $this->messageManager->addError(__('Brand could not be deleted.'));
+            $this->messageManager->addErrorMessage(__('Brand could not be deleted.'));
             return $resultRedirect->setPath('brand/brand/index');
         }
 
@@ -25,9 +25,9 @@ class Delete extends \Dmatthew\Brand\Controller\Adminhtml\Brand
         if ($brand->getId()) {
             try {
                 $this->_brandRepository->deleteById($brand->getId());
-                $this->messageManager->addSuccess(__('You deleted the brand.'));
+                $this->messageManager->addSuccessMessage(__('You deleted the brand.'));
             } catch (\Exception $exception) {
-                $this->messageManager->addError($exception->getMessage());
+                $this->messageManager->addErrorMessage($exception->getMessage());
             }
         }
 
