@@ -3,6 +3,11 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
+                <resource id="Magento_Catalog::catalog">
+                    <resource id="Magento_Catalog::catalog_inventory">
+                        <resource id="Dmatthew_Brand::brands" title="Brands" translate="title" sortOrder="30" />
+                    </resource>
+                </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">

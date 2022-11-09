@@ -314,4 +314,18 @@ class Brand extends \Magento\Catalog\Model\AbstractModel implements IdentityInte
         $url = $this->getUrlInstance()->getUrl('brand/brand/view', ['id' => $this->getId()]);
         return $url;
     }
+
+    /**
+     * Validate brand data.
+     *
+     * @return mixed
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function validate()
+    {
+        $this->_eventManager->dispatch($this->_eventPrefix . '_validate_before', $this->_getEventData());
+        $result = $this->_getResource()->validate($this);
+        $this->_eventManager->dispatch($this->_eventPrefix . '_validate_after', $this->_getEventData());
+        return $result;
+    }
 }

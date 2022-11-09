@@ -54,7 +54,7 @@ class Brand extends AbstractSource implements OptionSourceInterface
         if ($cache = $this->_configCacheType->load($cacheKey)) {
             $options = unserialize($cache);
         } else {
-            $collection = $this->_brandFactory->create()->getResourceCollection()->loadByStore();
+            $collection = $this->_brandFactory->create()->getResourceCollection()->load();
             $options = $collection->toOptionArray();
             $this->_configCacheType->save(serialize($options), $cacheKey);
         }
